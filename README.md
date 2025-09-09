@@ -117,7 +117,3 @@ The app demonstrates API integration, responsive UI design with Material-UI (MUI
    Not required — the app is intended as a public-facing demo project.
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License.
