@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Rick and Morty Character Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React + TypeScript application that allows users to search and explore characters from the [Rick and Morty API](https://rickandmortyapi.com/).  
+The app demonstrates API integration, responsive UI design with Material-UI (MUI), and clean project structure.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Setup and Installation
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Node.js](https://nodejs.org/) (>= 16.x recommended)
+- npm or yarn package manager
+- A GitHub account (optional, for GitHub Copilot setup)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Steps
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/kyleowen12345/hire-overseas-task.git
 
-### `npm run build`
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Configure environment variables:  
+   Copy `.env.sample` to `.env.local` and update the values as needed.
 
-### `npm run eject`
+   ```bash
+   cp .env.sample .env.local
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Example:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```env
+   REACT_APP_API_BASE_URL=https://rickandmortyapi.com/api
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Start the development server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-## Learn More
+5. Open in browser:
+   ```
+   http://localhost:3000
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎨 Design Decisions and Rationale
 
-### Code Splitting
+- **Material-UI (MUI)**:  
+  Chosen for its component-rich library and responsive grid system, ensuring the UI looks clean and professional across devices.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Responsive Layout**:  
+  Header and footer adapt to mobile and desktop views (e.g., navigation drawer on mobile, stacked footer elements).
 
-### Analyzing the Bundle Size
+- **Minimalist Theme**:  
+  White backgrounds with simple outlined buttons to keep the focus on character data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Search-Centric UX**:  
+  The landing page emphasizes the search bar, guiding users immediately to the primary action.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🛠️ Technical Approach and Architecture Choices
 
-### Advanced Configuration
+- **React + TypeScript**:  
+  Ensures type safety and scalable component architecture.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Folder Structure**:
 
-### Deployment
+  ```
+  src/
+  ├── components/    # Reusable UI components (SearchBar, CharacterCard, etc.)
+  ├── hooks/         # Custom hooks (useCharacterSearch)
+  ├── services/      # API service layer (fetch and transform data)
+  ├── types/         # TypeScript type definitions
+  ├── App.tsx        # Main app entry point
+  └── index.tsx      # ReactDOM render entry
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **API Layer** (`src/services/api.ts`):  
+  Abstracted API calls to allow easier testing, error handling, and swapping endpoints if needed.
 
-### `npm run build` fails to minify
+- **Environment Variables**:  
+  API base URL is configurable via `.env.local` for flexibility across environments.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Routing**:  
+  React Router used for navigation between `Home` and `Characters` pages.
+
+---
+
+## 📌 Assumptions Made During Development
+
+1. **Public API Reliability**:  
+   The app assumes the Rick and Morty API is available and responsive. No fallback dataset is included.
+
+2. **Basic Search Use Case**:  
+   Search functionality focuses on character name queries. Advanced filters (e.g., species, status, location) are out of scope.
+
+3. **Single API Source**:  
+   All data comes from the Rick and Morty API — no caching layer or database is introduced.
+
+4. **User Authentication**:  
+   Not required — the app is intended as a public-facing demo project.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
